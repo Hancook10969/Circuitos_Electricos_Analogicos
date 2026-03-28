@@ -1,33 +1,146 @@
-\documentclass[12pt]{article}
-
-\usepackage[spanish]{babel}
-\usepackage{amsmath, amssymb}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-nodecimaldot]{babel}
+\usepackage{tgtermes}
+\usepackage{newtxmath}
+\usepackage{amsmath}
+\usepackage{textcomp}
 \usepackage{graphicx}
 \usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{tocloft}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
 \usepackage{hyperref}
 
 \geometry{margin=2.5cm}
 
-\title{Informe de Laboratorio N° X}
-\author{Tu Nombre}
-\date{\today}
+\definecolor{AzulPrincipal}{HTML}{0B2D4D}
+\definecolor{AzulSecundario}{HTML}{1F5F8B}
+\definecolor{OroAcento}{HTML}{C9A227}
+\definecolor{GrisTexto}{HTML}{444444}
 
-\begin{document}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=black,
+    citecolor=black,
+    pdftitle={Plantilla de Informe},
+    pdfauthor={Tu Nombre}
+}
 
-\maketitle
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.25em}
+\onehalfspacing
 
-\section{Objetivos}
+\setlist[itemize]{leftmargin=2.8em, labelsep=0.8em, topsep=0.35em, itemsep=0.2em}
+\setlist[enumerate]{leftmargin=1.7em, topsep=0.35em, itemsep=0.2em}
 
-\section{Marco Teórico}
+\titleformat{\section}[hang]{\fontsize{18pt}{22pt}\selectfont\normalfont\color{black}}{\thesection.}{0.8em}{}
+\titleformat{\subsection}[hang]{\fontsize{14pt}{17pt}\selectfont\normalfont\color{black}}{\thesubsection}{0.8em}{}
 
-\section{Materiales}
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsecpagefont}{\normalfont}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsubsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\contentsname}{Índice}
+\renewcommand{\cfttoctitlefont}{\hfill\normalfont\fontsize{18pt}{22pt}\selectfont}
+\renewcommand{\cftaftertoctitle}{\hfill}
 
-\section{Procedimiento}
+\titlespacing*{\section}{0pt}{1.1em}{0.55em}
+\titlespacing*{\subsection}{0pt}{0.9em}{0.35em}
 
-\section{Resultados}
+\setlength{\headheight}{30pt}
 
-\section{Análisis}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\small\textcolor{black!65}{\Laboratorio: \Tema}}
+\rhead{}
+\cfoot{\small\textcolor{black}{\thepage}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{black!65}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0pt}
 
-\section{Conclusiones}
+\providecommand{\Universidad}{UNIVERSIDAD NACIONAL DE INGENIERÍA}
+\providecommand{\Facultad}{FACULTAD DE CIENCIAS}
+\providecommand{\Escuela}{ESCUELA DE FÍSICA}
+\providecommand{\Curso}{CIRCUITOS ELÉCTRICOS ANALÓGICOS}
+\providecommand{\Seccion}{SECCIÓN A}
+\providecommand{\NumeroLaboratorio}{X}
+\providecommand{\Laboratorio}{LABORATORIO N\textdegree{} \NumeroLaboratorio}
+\providecommand{\Tema}{TÍTULO DE LA PRÁCTICA}
+\providecommand{\RutaLogo}{logo.PNG}
+\providecommand{\IntegrantesBloque}{%
+\begin{enumerate}[leftmargin=1.8em,label=\arabic*.]
+    \item Integrante 1 -- código
+    \item Integrante 2 -- código
+\end{enumerate}}
+\providecommand{\FechaRealizacion}{Fecha de realización: dd de mes de aaaa - hh:mm}
+\providecommand{\Ciudad}{LIMA - PERU}
 
-\end{document}
+\newcommand{\ConfigurarInforme}[3]{%
+    \renewcommand{\NumeroLaboratorio}{#1}%
+    \renewcommand{\Tema}{#2}%
+    \renewcommand{\FechaRealizacion}{#3}%
+}
+
+\newcommand{\ConfigurarIntegrantes}[1]{%
+    \renewcommand{\IntegrantesBloque}{#1}%
+}
+
+\providecommand{\tituloSeccion}[1]{\section{#1}}
+
+\providecommand{\makeInformePortada}{%
+\begin{titlepage}
+    \thispagestyle{empty}
+    \vspace*{0.65cm}
+    \begin{center}
+        {\Large\bfseries\color{OroAcento} \Universidad}\par
+        \vspace{0.45cm}
+        {\Large\bfseries\color{AzulPrincipal} \Facultad}\par
+        \vspace{0.25cm}
+        {\Large\bfseries\color{AzulPrincipal} \Escuela}\par
+    \end{center}
+
+    \vspace{0.1cm}
+    \begin{center}
+        \includegraphics[width=0.4\textwidth]{\RutaLogo}%
+    \end{center}
+
+    \vspace{0.01cm}
+    \begin{center}
+        {\Large\bfseries\color{AzulPrincipal} \Curso}\par
+        \vspace{0.35cm}
+        {\Large\bfseries\color{red} \Seccion}\par
+    \end{center}
+
+    \vspace{0.1cm}
+    \begin{center}
+        {\large\bfseries \Laboratorio: \Tema}\par
+    \end{center}
+
+    \vspace{0.55cm}
+    \noindent{\large\textbf{INTEGRANTES DE LA MESA:} 2}\par
+    \vspace{0.35cm}
+    \begingroup
+    \leftskip=1.15cm
+    \rightskip=1.15cm
+    \parindent=0pt
+    \IntegrantesBloque
+    \endgroup
+
+    \vspace{0.55cm}
+    \begin{center}
+        {\FechaRealizacion}\par
+    \end{center}
+
+    \vfill
+
+    \begin{center}
+        {\large\bfseries \Ciudad}
+    \end{center}
+\end{titlepage}
+}

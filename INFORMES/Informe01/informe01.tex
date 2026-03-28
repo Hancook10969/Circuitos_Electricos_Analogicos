@@ -1,0 +1,66 @@
+\documentclass[12pt,a4paper]{article}
+
+\def\plantillaModoCompartido{1}
+\input{../../PLANTILLA/Plantilla.tex}
+
+\renewcommand{\RutaLogo}{../../PLANTILLA/logo.PNG}
+
+\ConfigurarInforme{1}{MEDICIONES DC}{Fecha de realización del Laboratorio N\textdegree{}1: Jueves 26 de Marzo del 2026 - 08:00 am}
+\ConfigurarIntegrantes{
+\begin{enumerate}[leftmargin=1.8em,label=\arabic*.]
+    \item Caicedo Carreño, Elmer Jaime -- 20240340E
+    \item Leon Ive, Renato XDDDDDDD -- 20240341E
+\end{enumerate}}
+
+\begin{document}
+
+\makeInformePortada
+
+\setcounter{page}{1}
+\tableofcontents
+\newpage
+
+\tituloSeccion{Objetivos}
+\begin{itemize}
+    \item Comprobar experimentalmente la relación entre tensión, corriente y resistencia.
+    \item Aplicar el formato del informe para presentar resultados de laboratorio.
+\end{itemize}
+
+\tituloSeccion{Marco Teórico}
+La Ley de Ohm establece que $V = IR$, donde $V$ es el voltaje, $I$ la corriente y $R$ la resistencia.
+
+\tituloSeccion{Materiales}
+\begin{itemize}
+    \item Fuente de voltaje DC.
+    \item Resistencias de prueba.
+    \item Multímetro digital.
+    \item Protoboard y cables de conexión.
+\end{itemize}
+
+\tituloSeccion{Procedimiento}
+\begin{enumerate}
+    \item Se armó el circuito resistivo sobre la protoboard.
+    \item Se midió la corriente para distintos valores de voltaje.
+    \item Se compararon los resultados con el valor teórico esperado.
+\end{enumerate}
+
+\tituloSeccion{Resultados}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+Voltaje (V) & Corriente medida (mA) & Corriente teórica (mA) \\
+\hline
+1.0 & 10.1 & 10.0 \\
+2.0 & 20.0 & 20.0 \\
+3.0 & 30.2 & 30.0 \\
+\hline
+\end{tabular}
+\end{center}
+
+\tituloSeccion{Análisis}
+Los valores medidos muestran una variación pequeña respecto a la teoría.
+
+\tituloSeccion{Conclusiones}
+Se verificó experimentalmente la proporcionalidad entre voltaje y corriente en un circuito resistivo.
+
+\end{document}
