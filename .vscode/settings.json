@@ -1,0 +1,7 @@
+{
+  "latex-utilities.countWord.path": "C:\\Strawberry\\perl\\bin\\perl.exe",
+  "latex-utilities.countWord.args": [
+    "C:\\Users\\caice\\AppData\\Local\\Programs\\MiKTeX\\scripts\\texcount\\texcount.pl",
+    "-q"
+  ]
+}
