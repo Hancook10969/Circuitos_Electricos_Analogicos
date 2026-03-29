@@ -1,45 +1,81 @@
+% Paquetes y codificación de caracteres
 \usepackage[T1]{fontenc}
 \usepackage[spanish,es-nodecimaldot]{babel}
-\usepackage{tgtermes}
-\usepackage{newtxmath}
+\usepackage{newpxtext}
+\usepackage{newpxmath}
 \usepackage{amsmath}
 \usepackage{textcomp}
 \usepackage{graphicx}
 \usepackage{geometry}
 \usepackage{xcolor}
 \usepackage{setspace}
+\usepackage{ragged2e}
+\usepackage{array}
+\usepackage{makecell}
+\usepackage{xparse}
 \usepackage{titlesec}
 \usepackage{tocloft}
 \usepackage{fancyhdr}
 \usepackage{enumitem}
 \usepackage{hyperref}
+\usepackage{caption}
 
+% Márgenes y colores
 \geometry{margin=2.5cm}
-
 \definecolor{AzulPrincipal}{HTML}{0B2D4D}
 \definecolor{AzulSecundario}{HTML}{1F5F8B}
 \definecolor{OroAcento}{HTML}{C9A227}
 \definecolor{GrisTexto}{HTML}{444444}
 
+% Hipervínculos y apariencia general
 \hypersetup{
     colorlinks=true,
     linkcolor=black,
     urlcolor=black,
     citecolor=black,
-    pdftitle={Plantilla de Informe},
-    pdfauthor={Tu Nombre}
+    pdftitle={Plantilla de Informe de Laboratorio},
+    pdfauthor={Elmer}
 }
 
+% Parrafos, interlineado (Espacio entre título y texto, y entre subtítulos consecutivos) y justificación
 \setlength{\parindent}{1.25cm}
-\setlength{\parskip}{0.25em}
-\onehalfspacing
+\setlength{\parskip}{0.25cm}
+\setstretch{1.15} %interlineado general del texto
+\titlespacing*{\section}{0pt}{0.45\baselineskip}{0.45\baselineskip} 
+\titlespacing*{\subsection}{0pt}{0.45\baselineskip}{0.45\baselineskip}
+\justifying
 
-\setlist[itemize]{leftmargin=2.8em, labelsep=0.8em, topsep=0.35em, itemsep=0.2em}
-\setlist[enumerate]{leftmargin=1.7em, topsep=0.35em, itemsep=0.2em}
+% Listas y viñetas
+\setlist[itemize]{leftmargin=2.8em, labelsep=0.8em, topsep=0.2em, itemsep=0pt, parsep=0pt, partopsep=0pt}
+\setlist[enumerate]{leftmargin=2.8em, labelsep=0.8em, topsep=0.2em, itemsep=0pt, parsep=0pt, partopsep=0pt}
 
-\titleformat{\section}[hang]{\fontsize{18pt}{22pt}\selectfont\normalfont\color{black}}{\thesection.}{0.8em}{}
-\titleformat{\subsection}[hang]{\fontsize{14pt}{17pt}\selectfont\normalfont\color{black}}{\thesubsection}{0.8em}{}
+% Tablas
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\DeclareCaptionFont{nuevept}{\fontsize{9pt}{11pt}\selectfont\color{GrisTexto}}
+\renewcommand{\tablename}{Tabla}
+\captionsetup[table]{name=Tabla,position=bottom,font=nuevept,labelfont=nuevept,textfont=nuevept}
+\newcommand{\TituloTabla}[1]{\textcolor{GrisTexto}{\bfseries #1}}
+\NewDocumentCommand{\TablaInforme}{O{!ht} m m m O{1.2} O{6pt} +m}{%
+\begin{table}[#1]
+    \centering
+    \fontsize{10pt}{12pt}\selectfont
+    \renewcommand{\arraystretch}{#5}
+    \setlength{\tabcolsep}{#6}
+    {\color{GrisTexto}
+    \begin{tabular}{#2}
+    #7
+    \end{tabular}}
+    \caption{#3}
+    \label{#4}
+\end{table}
+}
 
+%Títulos y subtítulos
+\AtBeginDocument{\fontsize{11pt}{13pt}\selectfont\color{GrisTexto}}
+\titleformat{\section}[hang]{\fontsize{18pt}{20pt}\selectfont\normalfont\color{black}}{\thesection.}{0.8em}{}
+\titleformat{\subsection}[hang]{\fontsize{14pt}{12pt}\selectfont\normalfont\color{black}}{\thesubsection}{0.8em}{}
+
+% Índice
 \renewcommand{\cftsecfont}{\normalfont}
 \renewcommand{\cftsecpagefont}{\normalfont}
 \renewcommand{\cftsubsecfont}{\normalfont}
@@ -50,11 +86,8 @@
 \renewcommand{\cfttoctitlefont}{\hfill\normalfont\fontsize{18pt}{22pt}\selectfont}
 \renewcommand{\cftaftertoctitle}{\hfill}
 
-\titlespacing*{\section}{0pt}{1.1em}{0.55em}
-\titlespacing*{\subsection}{0pt}{0.9em}{0.35em}
-
+% Encabezados y pies de página
 \setlength{\headheight}{30pt}
-
 \pagestyle{fancy}
 \fancyhf{}
 \lhead{\small\textcolor{black!65}{\Laboratorio: \Tema}}
@@ -64,35 +97,35 @@
 \renewcommand{\headrule}{\hbox to\headwidth{\color{black!65}\leaders\hrule height \headrulewidth\hfill}}
 \renewcommand{\footrulewidth}{0pt}
 
+% Textos fijos para cada informe
 \providecommand{\Universidad}{UNIVERSIDAD NACIONAL DE INGENIERÍA}
 \providecommand{\Facultad}{FACULTAD DE CIENCIAS}
 \providecommand{\Escuela}{ESCUELA DE FÍSICA}
 \providecommand{\Curso}{CIRCUITOS ELÉCTRICOS ANALÓGICOS}
 \providecommand{\Seccion}{SECCIÓN A}
-\providecommand{\NumeroLaboratorio}{X}
-\providecommand{\Laboratorio}{LABORATORIO N\textdegree{} \NumeroLaboratorio}
-\providecommand{\Tema}{TÍTULO DE LA PRÁCTICA}
 \providecommand{\RutaLogo}{logo.PNG}
 \providecommand{\IntegrantesBloque}{%
 \begin{enumerate}[leftmargin=1.8em,label=\arabic*.]
-    \item Integrante 1 -- código
-    \item Integrante 2 -- código
+    \item Caicedo Carreño Elmer Jaime -- 20240340E
+    \item Leon Ive Bryan Renato -- 20240541K
 \end{enumerate}}
-\providecommand{\FechaRealizacion}{Fecha de realización: dd de mes de aaaa - hh:mm}
 \providecommand{\Ciudad}{LIMA - PERU}
 
+% Variables editables para cada informe
+\providecommand{\NumeroLaboratorio}{X}
+\providecommand{\Laboratorio}{LABORATORIO N\textdegree{} \NumeroLaboratorio}
+\providecommand{\Tema}{TÍTULO DEL LABORATORIO}
+\providecommand{\FechaRealizacion}{Fecha de realización: dd de mes de aaaa - hh:mm}
+
+%Macros para configurar cada informe
 \newcommand{\ConfigurarInforme}[3]{%
     \renewcommand{\NumeroLaboratorio}{#1}%
     \renewcommand{\Tema}{#2}%
     \renewcommand{\FechaRealizacion}{#3}%
 }
-
-\newcommand{\ConfigurarIntegrantes}[1]{%
-    \renewcommand{\IntegrantesBloque}{#1}%
-}
-
 \providecommand{\tituloSeccion}[1]{\section{#1}}
 
+% Carátula del informe
 \providecommand{\makeInformePortada}{%
 \begin{titlepage}
     \thispagestyle{empty}

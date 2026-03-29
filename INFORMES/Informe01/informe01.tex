@@ -1,66 +1,298 @@
 \documentclass[12pt,a4paper]{article}
-
-\def\plantillaModoCompartido{1}
 \input{../../PLANTILLA/Plantilla.tex}
-
 \renewcommand{\RutaLogo}{../../PLANTILLA/logo.PNG}
-
 \ConfigurarInforme{1}{MEDICIONES DC}{Fecha de realización del Laboratorio N\textdegree{}1: Jueves 26 de Marzo del 2026 - 08:00 am}
-\ConfigurarIntegrantes{
-\begin{enumerate}[leftmargin=1.8em,label=\arabic*.]
-    \item Caicedo Carreño, Elmer Jaime -- 20240340E
-    \item Leon Ive, Renato XDDDDDDD -- 20240341E
-\end{enumerate}}
 
+% Inicio del informe
 \begin{document}
-
 \makeInformePortada
-
 \setcounter{page}{1}
 \tableofcontents
 \newpage
 
+% Contenido del informe
 \tituloSeccion{Objetivos}
-\begin{itemize}
-    \item Comprobar experimentalmente la relación entre tensión, corriente y resistencia.
-    \item Aplicar el formato del informe para presentar resultados de laboratorio.
-\end{itemize}
+\subsection{Objetivo general}
+    \begin{itemize}
+        \item Realizar mediciones eléctricas básicas basadas en circuitos resistivos, utilizando un multímetro digital.
+    \end{itemize}
+\subsection{Objetivos específicos}
+    \begin{itemize}
+        \item Obtener valores de resistencias eléctricas utilizando la tabla del código de colores y un multímetro digital.
+        \item Analizar el comportamiento de los circuitos divisores de voltaje y de corriente.
+        \item Determinar la influencia de la impedancia interna del multímetro en mediciones de voltaje.
+    \end{itemize}
 
-\tituloSeccion{Marco Teórico}
-La Ley de Ohm establece que $V = IR$, donde $V$ es el voltaje, $I$ la corriente y $R$ la resistencia.
+\tituloSeccion{Fundamento Teórico}
+\subsection{Resistor Eléctrico}
+\subsection{Circuito divisor de voltaje}
+\subsection{Circuito divisor de corriente}
+\subsection{Impedancia del multímetro}
 
-\tituloSeccion{Materiales}
-\begin{itemize}
-    \item Fuente de voltaje DC.
-    \item Resistencias de prueba.
-    \item Multímetro digital.
-    \item Protoboard y cables de conexión.
-\end{itemize}
-
-\tituloSeccion{Procedimiento}
+\tituloSeccion{Procedimiento experimental}
+\subsection{Materiales e indicaciones}
 \begin{enumerate}
     \item Se armó el circuito resistivo sobre la protoboard.
     \item Se midió la corriente para distintos valores de voltaje.
     \item Se compararon los resultados con el valor teórico esperado.
 \end{enumerate}
 
-\tituloSeccion{Resultados}
-\begin{center}
-\begin{tabular}{|c|c|c|}
-\hline
-Voltaje (V) & Corriente medida (mA) & Corriente teórica (mA) \\
-\hline
-1.0 & 10.1 & 10.0 \\
-2.0 & 20.0 & 20.0 \\
-3.0 & 30.2 & 30.0 \\
-\hline
-\end{tabular}
-\end{center}
+\newpage
+\tituloSeccion{Análisis de datos}
+\subsection{Medición de resistencias}
 
-\tituloSeccion{Análisis}
-Los valores medidos muestran una variación pequeña respecto a la teoría.
+    \begin{table}[!ht]
+    \centering
+    \fontsize{10pt}{12pt}\selectfont
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{6pt}
+    {\color{GrisTexto}
+    \begin{tabular}{|C{5.1cm}|C{3.2cm}|C{3.3cm}|C{2.8cm}|}
+    \hline
+    \textbf{Colores de las franjas en el resistor} &
+    \textbf{$R\,(\Omega)$ código de colores} &
+    \textbf{Tolerancia ($\pm$) código de colores} &
+    \textbf{$R\,(\Omega)$ Multímetro} \\
+    \hline
+    ROJO - MORADO - NEGRO - DORADO - MARRÓN & $270 \cdot 10^{-1} = 27,0$ & $\pm 1\%$ & $27,8$ \\
+    \hline
+    MARRÓN - GRIS - NEGRO - ROJO - MARRÓN & $180 \cdot 10^{2} = 18,0 \cdot 10^{3}$ & $\pm 2\%$ & $18,17 \cdot 10^{3}$ \\
+    \hline
+    ROJO - MORADO - MARRÓN - DORADO & $27 \cdot 10 = 270,0$ & $\pm 5\%$ & $265,6$ \\
+    \hline
+    MARRÓN - NEGRO - NEGRO - DORADO & $10 \cdot 1 = 10,0$ & $\pm 5\%$ & $10,6$ \\
+    \hline
+    AZUL - GRIS - NEGRO - DORADO & $68 \cdot 1 = 68,0$ & $\pm 5\%$ & $67,0$ \\
+    \hline
+    \end{tabular}}
+    \caption{Medición de resistencias por código de colores y multímetro.}
+    \label{tab:medicion-resistencias}
+    \end{table}
+
+    \begin{table}[!ht]
+    \centering
+    \fontsize{10pt}{12pt}\selectfont
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{6pt}
+    {\color{GrisTexto}
+    \begin{tabular}{|C{1.45cm}|C{1.45cm}|C{1.45cm}|C{1.45cm}|C{1.45cm}|C{1.45cm}|C{1.45cm}|C{1.45cm}|}
+    \hline
+    \textbf{$R_1$ ($\Omega$)} &
+    \textbf{$R_2$ ($\Omega$)} &
+    \textbf{$R_3$ ($\Omega$)} &
+    \textbf{$R_4$ ($\Omega$)} &
+    \textbf{$R_5$ ($\Omega$)} &
+    \textbf{$R_6$ ($\Omega$)} &
+    \textbf{$R_7$ ($\Omega$)} &
+    \textbf{$R_8$ ($\Omega$)} \\
+    \hline
+    $32,45\,\cdot\,10^{3}$ & $32,46\,\cdot\,10^{3}$ & $17,72\,\cdot\,10^{3}$ & $17,54\,\cdot\,10^{3}$ & $19,60\,\cdot\,10^{3}$ & $19,87\,\cdot\,10^{3}$ & $49,69\,\cdot\,10^{3}$ & $49,13\,\cdot\,10^{3}$ \\
+    \hline
+    \end{tabular}}
+    \caption{Valores medidos de las resistencias de la red mostrada en la figura 1.6.}
+    \label{tab:red-resistiva-resistencias}
+    \end{table}
+
+    \begin{table}[!ht]
+    \centering
+    \fontsize{10pt}{12pt}\selectfont
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{6pt}
+    {\color{GrisTexto}
+    \begin{tabular}{|C{4.0cm}|C{4.0cm}|C{4.0cm}|}
+    \hline
+    \textbf{$R_{eq}$ ($\Omega$) Calculado} &
+    \textbf{$R_{eq}$ ($\Omega$) Medido} &
+    \textbf{$\%$ error relativo} \\
+    \hline
+    $27,667\,\cdot\,10^{3}$ & $27,67\,\cdot\,10^{3}$ & $0,01$ \\
+    \hline
+    \end{tabular}}
+    \caption{Resistencia equivalente calculada, resistencia equivalente medida y error relativo.}
+    \label{tab:resistencia-equivalente}
+    \end{table}
+
+\subsection{Divisor de voltaje}
+
+    \begin{table}[!ht]
+    \centering
+    \fontsize{10pt}{12pt}\selectfont
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{6pt}
+    {\color{GrisTexto}
+    \begin{tabular}{|C{3cm}|C{3cm}|C{3cm}|}
+    \hline
+    \textbf{Magnitud ($\Omega$) } & \textbf{Valor Teórico} & \textbf{Valor Real}\\
+    \hline
+    $R_2$ & $10\,\mathrm{k}\Omega$ & $9,98\,\mathrm{k}\Omega$ \\
+    \hline
+    \end{tabular}}
+    \caption{Selección de la resistencia $R_2$ para el divisor de voltaje.}
+    \label{tab:divisor-voltaje-r2}
+    \end{table}
+
+    \begin{table}[!ht]
+    \centering
+    \fontsize{10pt}{12pt}\selectfont
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{6pt}
+    {\color{GrisTexto}
+    \begin{tabular}{|C{4cm}|C{4cm}|C{4cm}|}
+    \hline
+    \textbf{$V_{BC}$ (V) Calculado} & \textbf{$V_{BC}$ (V) Medido} & \textbf{$\%$ error relativo} \\
+    \hline
+    $5$ & $5{,}025$ & $0{,}5\%$ \\
+    \hline
+    \end{tabular}}
+    \caption{Cálculo y medición de $V_{BC}$ para el primer montaje del divisor de voltaje.}
+    \label{tab:divisor-voltaje-vbc-1}
+    \end{table}
+
+    \begin{table}[!ht]
+    \centering
+    \fontsize{10pt}{12pt}\selectfont
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{6pt}
+    {\color{GrisTexto}
+    \begin{tabular}{|C{3cm}|C{3cm}|C{3cm}|}
+    \hline
+    \textbf{Magnitud ($\Omega$)} & \textbf{Valor Teórico} & \textbf{Valor Real}\\
+    \hline
+    $R_3$ & $5\,\mathrm{k}\Omega$ & $4{,}99\,\mathrm{k}\Omega$ \\
+    \hline
+    \end{tabular}}
+    \caption{Selección de la resistencia $R_3$ para el segundo montaje del divisor de voltaje.}
+    \label{tab:divisor-voltaje-r3}
+    \end{table}
+
+    \begin{table}[!ht]
+    \centering
+    \fontsize{10pt}{12pt}\selectfont
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{6pt}
+    {\color{GrisTexto}
+    \begin{tabular}{|C{4cm}|C{4cm}|C{4cm}|}
+    \hline
+    \textbf{$V_{BC}$ (V) Calculado} & \textbf{$V_{BC}$ (V) Medido} & \textbf{$\%$ error relativo} \\
+    \hline
+    $2{,}5$ & $2{,}499$ & $0{,}04$ \\
+    \hline
+    \end{tabular}}
+    \caption{Cálculo y medición de $V_{BC}$ para el segundo montaje del divisor de voltaje.}
+    \label{tab:divisor-voltaje-vbc-2}
+    \end{table}
+
+    \begin{table}[!ht]
+    \centering
+    \fontsize{10pt}{12pt}\selectfont
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{6pt}
+    {\color{GrisTexto}
+    \begin{tabular}{|C{1cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|}
+    \hline
+    \textbf{$R_2$ (k$\Omega$)} &
+    \textbf{$V_{BC}$ (V) Calculado} &
+    \textbf{$V_{BC}$ (V) Medido} &
+    \textbf{$\%$ error relativo $V_{BC}$} &
+    \textbf{$I$ (A) Calculado} &
+    \textbf{$I$ (A) Medido} &
+    \textbf{$\%$ error relativo $I$} \\
+    \hline
+    $4{,}001$ & $2{,}858$ & $2{,}198$ & $23{,}1\%$ & $0{,}714\cdot10^{-3}$ & $0{,}76\cdot10^{-3}$ & $6{,}4\%$ \\
+    \hline
+    $5{,}011$ & $3{,}338$ & $3{,}206$ & $4{,}0\%$ & $0{,}666\cdot10^{-3}$ & $\,$ & $\,$ \\
+    \hline
+    $\,$ & $\,$ & $\,$ & $\,$ & $\,$ & $\,$ & $\,$ \\
+    \hline
+    $\,$ & $\,$ & $\,$ & $\,$ & $\,$ & $\,$ & $\,$ \\
+    \hline
+    $\,$ & $\,$ & $\,$ & $\,$ & $\,$ & $\,$ & $\,$ \\
+    \hline
+    \end{tabular}}
+    \caption{Mediciones para distintos valores de $R_2$ en el divisor de voltaje.}
+    \label{tab:divisor-voltaje-r2-variaciones}
+    \end{table}
+
+\newpage
+\subsection{Divisor de corriente}
+
+    \begin{table}[!ht]
+    \centering
+    \fontsize{10pt}{12pt}\selectfont
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{6pt}
+    {\color{GrisTexto}
+    \begin{tabular}{|C{3cm}|C{3cm}|C{3cm}|}
+    \hline
+    \textbf{Magnitud ($\Omega$)} & \textbf{Valor Teórico} & \textbf{Valor Real} \\
+    \hline
+    $R_2$ & $10\,\mathrm{k}\Omega$ & $9{,}98\,\mathrm{k}\Omega$ \\
+    \hline
+    \end{tabular}}
+    \caption{Selección de la resistencia $R_2$ para el divisor de corriente.}
+    \label{tab:divisor-corriente-r2}
+    \end{table}
+
+    \begin{table}[!ht]
+    \centering
+    \fontsize{10pt}{12pt}\selectfont
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{6pt}
+    {\color{GrisTexto}
+    \begin{tabular}{|C{4cm}|C{4cm}|C{4cm}|}
+    \hline
+    \textbf{$I_2$ (A) Calculado} & \textbf{$I_2$ (A) Medido} & \textbf{$\%$ error relativo} \\
+    \hline
+    $1\cdot10^{-3}$ & $0{,}98\cdot10^{-3}$ & $2$ \\
+    \hline
+    \end{tabular}}
+    \caption{Cálculo y medición de la corriente $I_2$ para el primer montaje del divisor de corriente.}
+    \label{tab:divisor-corriente-i2-1}
+    \end{table}
+
+    \begin{table}[!ht]
+    \centering
+    \fontsize{10pt}{12pt}\selectfont
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{6pt}
+    {\color{GrisTexto}
+    \begin{tabular}{|C{3cm}|C{3cm}|C{3cm}|}
+    \hline
+    \textbf{Magnitud ($\Omega$)} & \textbf{Valor Teórico} & \textbf{Valor Real} \\
+    \hline
+    $R_3$ & $20\,\mathrm{k}\Omega$ & $19{,}98\,\mathrm{k}\Omega$ \\
+    \hline
+    \end{tabular}}
+    \caption{Selección de la resistencia $R_3$ para el segundo montaje del divisor de corriente.}
+    \label{tab:divisor-corriente-r3}
+    \end{table}
+
+    \begin{table}[!ht]
+    \centering
+    \fontsize{10pt}{12pt}\selectfont
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{6pt}
+    {\color{GrisTexto}
+    \begin{tabular}{|C{4cm}|C{4cm}|C{4cm}|}
+    \hline
+    \textbf{$I_2$ (A) Calculado} & \textbf{$I_2$ (A) Medido} & \textbf{$\%$ error relativo} \\
+    \hline
+    $0{,}33\cdot10^{-3}$ & $0{,}33\cdot10^{-3}$ & $0$ \\
+    \hline
+    \end{tabular}}
+    \caption{Cálculo y medición de la corriente $I_2$ para el segundo montaje del divisor de corriente.}
+    \label{tab:divisor-corriente-i2-2}
+    \end{table}
+
+
+\tituloSeccion{Discusión de resultados}
+
+\tituloSeccion{Actividades adicionales}
 
 \tituloSeccion{Conclusiones}
-Se verificó experimentalmente la proporcionalidad entre voltaje y corriente en un circuito resistivo.
+
+\tituloSeccion{Bibliografía}
+
+\tituloSeccion{Anexos}
 
 \end{document}
