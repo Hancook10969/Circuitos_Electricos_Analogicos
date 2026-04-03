@@ -1,10 +1,7 @@
 % Paquetes y codificación de caracteres
 \usepackage[T1]{fontenc}
 \usepackage[spanish,es-nodecimaldot]{babel}
-\usepackage{newpxtext}
-\usepackage{newpxmath}
 \usepackage{amsmath}
-\usepackage{textcomp}
 \usepackage{graphicx}
 \usepackage{geometry}
 \usepackage{xcolor}
@@ -19,6 +16,7 @@
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{caption}
+\usepackage{float}
 
 % Márgenes y colores
 \geometry{margin=2.5cm}
@@ -44,6 +42,7 @@
 \titlespacing*{\section}{0pt}{0.45\baselineskip}{0.45\baselineskip} 
 \titlespacing*{\subsection}{0pt}{0.45\baselineskip}{0.45\baselineskip}
 \justifying
+\numberwithin{equation}{section}
 
 % Listas y viñetas
 \setlist[itemize]{leftmargin=2.8em, labelsep=0.8em, topsep=0.2em, itemsep=0pt, parsep=0pt, partopsep=0pt}
@@ -51,29 +50,30 @@
 
 % Tablas
 \newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
-\DeclareCaptionFont{nuevept}{\fontsize{9pt}{11pt}\selectfont\color{GrisTexto}}
+\DeclareCaptionFont{nuevept}{\fontsize{9pt}{11pt}\selectfont}
 \renewcommand{\tablename}{Tabla}
+\renewcommand{\figurename}{Figura}
 \captionsetup[table]{name=Tabla,position=bottom,font=nuevept,labelfont=nuevept,textfont=nuevept}
-\newcommand{\TituloTabla}[1]{\textcolor{GrisTexto}{\bfseries #1}}
+\captionsetup[figure]{name=Figura,position=bottom,font=nuevept,labelfont=nuevept,textfont=nuevept}
+\newcommand{\TituloTabla}[1]{\bfseries #1}
 \NewDocumentCommand{\TablaInforme}{O{!ht} m m m O{1.2} O{6pt} +m}{%
 \begin{table}[#1]
     \centering
     \fontsize{10pt}{12pt}\selectfont
     \renewcommand{\arraystretch}{#5}
     \setlength{\tabcolsep}{#6}
-    {\color{GrisTexto}
     \begin{tabular}{#2}
     #7
-    \end{tabular}}
+    \end{tabular}
     \caption{#3}
     \label{#4}
 \end{table}
 }
 
 %Títulos y subtítulos
-\AtBeginDocument{\fontsize{11pt}{13pt}\selectfont\color{GrisTexto}}
-\titleformat{\section}[hang]{\fontsize{18pt}{20pt}\selectfont\normalfont\color{black}}{\thesection.}{0.8em}{}
-\titleformat{\subsection}[hang]{\fontsize{14pt}{12pt}\selectfont\normalfont\color{black}}{\thesubsection}{0.8em}{}
+\AtBeginDocument{\fontsize{11pt}{13pt}\selectfont}
+\titleformat{\section}[hang]{\fontsize{18pt}{20pt}\selectfont\bfseries}{\thesection.}{0.8em}{}
+\titleformat{\subsection}[hang]{\fontsize{14pt}{12pt}\selectfont\bfseries}{\thesubsection}{0.8em}{}
 
 % Índice
 \renewcommand{\cftsecfont}{\normalfont}
@@ -90,11 +90,11 @@
 \setlength{\headheight}{30pt}
 \pagestyle{fancy}
 \fancyhf{}
-\lhead{\small\textcolor{black!65}{\Laboratorio: \Tema}}
+\lhead{\small\textcolor{GrisTexto}{\Laboratorio: \Tema}}
 \rhead{}
-\cfoot{\small\textcolor{black}{\thepage}}
+\cfoot{\small\textcolor{GrisTexto}{\thepage}}
 \renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\headrule}{\hbox to\headwidth{\color{black!65}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{GrisTexto}\leaders\hrule height \headrulewidth\hfill}}
 \renewcommand{\footrulewidth}{0pt}
 
 % Textos fijos para cada informe

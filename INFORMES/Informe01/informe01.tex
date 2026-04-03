@@ -1,6 +1,7 @@
 \documentclass[12pt,a4paper]{article}
 \input{../../PLANTILLA/Plantilla.tex}
 \renewcommand{\RutaLogo}{../../PLANTILLA/logo.PNG}
+\graphicspath{{Imagenes/}}
 \ConfigurarInforme{1}{MEDICIONES DC}{Fecha de realización del Laboratorio N\textdegree{}1: Jueves 26 de Marzo del 2026 - 08:00 am}
 
 % Inicio del informe
@@ -24,30 +25,224 @@
     \end{itemize}
 
 \tituloSeccion{Fundamento Teórico}
+
 \subsection{Resistor Eléctrico}
+Un resistor es un componente muy usado en circuitos electrónicos, el cual posee un valor de resistencia $R$ especificado y nos sirve para regular los valores de corriente y voltaje según se requiera. En la práctica el valor de una resistencia varía en un cierto porcentaje según se especifique en su fabricación. En circuitos se pueden emplear resistores de valor fijo o variable (Fig. \ref{Resistoresvariables}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{Imagen1.PNG}
+    \caption{Resistores de valor fijo (a) y variable (b)}
+    \label{Resistoresvariables}
+\end{figure}
+
+La resistencia variable es denominada potenciómetro con tres terminales y una perilla.
+Cuando se usan únicamente los terminales en los extremos se tiene el comportamiento de un resistor con un valor fijo y máximo.
+Cuando se usa uno de los extremos y el terminal del medio, se comporta como una resistor variable, donde su resistencia se modifica haciendo girar la perilla. Su rango de valores no puede exceder el valor fijo máximo. Un resistor variable de dos terminales es conocido también como \textbf{reostato}.
+
+Los resistores de bandas coloridas son muy usados debido a su bajo coste y fácil manipulación. Pueden ser de 4, 5 o 6 bandas, donde el orden y el color de cada una nos indican un valor de resistencia específico de acuerdo al código de color universal del resistor (Fig. \ref{RCodColores}).
+
+Las primeras bandas de colores nos indica un número compuesto según el orden en que están.
+La penúltima banda conocida como \textbf{multiplicador} nos indica la potencia de 10 que se multiplicará al valor obtenido en las bandas anteriores.
+La última banda nos indica la \textbf{tolerancia} que es el porcentaje en el que varía el valor obtenido anteriormente. Esta banda suele estar más alejada de las otras y por lo general es dorada o plateada.
+
+Por ejemplo si tenemos un resistor de 5 bandas de colores: rojo, verde, marrón, rojo, dorado; se tendrá una resistencia $R = (25,100 \pm 1,255) k\Omega$
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Imagen2.PNG}
+    \caption{Código de colores para resistores de 4 o 5 bandas}
+    \label{RCodColores}
+\end{figure}
+
+Un conjunto de resistores en serie o en paralelo se comportan como un solo resistor con un valor de resistencia equivalente $R_{eq}$ específico. Para resistores en serie: 
+\begin{equation}
+    R_{eq} = R_1+R_2+...+R_n
+    \label{eq:serie}
+\end{equation}
+y para resistores en paralelo:
+\begin{equation}
+    \frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \cdots + \frac{1}{R_n}
+    \label{eq:paralelo}
+\end{equation}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Imagen3.PNG}
+    \caption{Resistores en serie (a) y en paralelo (b)}
+    \label{ResistoresSP}
+\end{figure}
+
 \subsection{Circuito divisor de voltaje}
+Este circuito en serie se caracteriza porque la corriente es la misma (en una rama parcial del circuito), mientras que el voltaje $V$ se encuentra repartido o dividido proporcionalmente al valor de cada resistor (Fig. \ref{DivisorVoltaje}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagen4.PNG}
+    \caption{Circuito divisor de voltaje}
+    \label{DivisorVoltaje}
+\end{figure}
+
+Si por el circuito pasa una corriente $I$ entonces se tiene $V_{in} - IR_1 - IR_2=0$. Por la ley de Ohm, en el resistor $R_2$ se tiene que $V_2=IR_2$. entonces:
+\begin{equation}
+    V_2=V_{in}\bigg(\frac{R_2}{R_1+R_2}\bigg)
+    \label{eq:divisor-voltaje}
+\end{equation}
+
+Podemos generalizar esta ecuación para un circuito con $n$ resistores, de modo que en el voltaje en el resistor $i$ se obtenga como:
+\begin{equation}
+    V_i=V_{in}\bigg(\frac{R_i}{R_1+R_2+...+R_n}\bigg)
+    \label{eq:divisor-voltaje-general}
+\end{equation}
+
 \subsection{Circuito divisor de corriente}
+Este circuito en paralelo se caracteriza porque el voltaje $V$ es el mismo en cada rama del circuito, mientras que la corriente $I$ se encuentra repartida o dividida proporcionalmente al valor de cada resistor (Fig. \ref{DivisorCorriente}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{Imagen5.PNG}
+    \caption{Circuito divisor de corriente}
+    \label{DivisorCorriente}
+\end{figure}
+
+La resistencia equivalente del circuito se calcula con la ecuación \ref{eq:paralelo}, de la cual obtenemos $R_{eq}=\frac{R_1R_2}{R_1+R_2}$, por lo tanto, $V_{in}-IR_{eq}=0$. Reemplazando esta ecuación en las ecuaciones $V_1-IR_1=0$ y $V_2-IR_2=0$, se obtiene:
+\begin{equation}
+    I_1=I\bigg(\frac{R_2}{R_1+R_2}\bigg) \quad\text{y}\quad I_2=I\bigg(\frac{R_1}{R_1+R_2}\bigg)
+    \label{eq:divisor-corriente}
+\end{equation}
+
+Podemos generalizar esta ecuación para un circuito con $n$ resistores, de modo que en la corriente en el resistor $i$ se obtenga como:
+\begin{equation}
+    I_i=I\bigg(\frac{R_{eq}}{R_i}\bigg)
+    \label{eq:divisor-corriente-general}
+\end{equation}
+
 \subsection{Impedancia del multímetro}
+Un multímetro digital permite hacer mediciones de voltaje, corriente, resistencia, entre otros. Este cuenta con terminales de entrada donde unos cables con puntas realizan la medición; un selector rotativo para acceder a las diferentes funciones y rangos de medición; y una pantalla que muestra el número medido indicando también valores decimales, signo negativo si corresponde, la unidad de medida e incluso el tipo de corriente (DC o AC).
+
+La impedancia interna del multímetro es una característica intrínseca que se presenta al realizar mediciones. Esta impedancia puede influir en los valores medidos porque interactúa con el circuito. La impedancia interna varía dependiendo de la función seleccionada, por ejemplo, al medir voltaje, la impedancia interna debería ser muy alta (idealmente infinita) de este modo la resistencia equivalente casi no se altera. Por otro lado, al medir corriente, la impedancia interna debería ser extremadamente baja (idealmente igual a cero). Es muy importante señalar que las medidas de voltaje se realizan en paralelo y las de corriente en serie.
+
+\tituloSeccion{Materiales e indicaciones}
+
+\begin{itemize}
+        \item Fuente de voltaje DC (Fig. \ref{Fuente DC})
+        \item Multímetro digital (Fig. \ref{Multimetro})
+        \item Protoboard (Fig. \ref{Protoboard})
+        \item Resistencias (Fig. \ref{Resistores})
+        \item Potenciómetros (Fig. \ref{Potenciometro10k})
+    \end{itemize}
+    
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Captura de pantalla 2026-03-29 151256.png}
+        \caption{Fuente de voltaje DC}
+        \label{Fuente DC}
+    \end{minipage}
+    \hspace{0.02\linewidth}
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Captura de pantalla 2026-03-29 151343.png}
+        \caption{Multímetro Digital}
+        \label{Multimetro}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Captura de pantalla 2026-03-29 151358.png}
+        \caption{Protoboard}
+        \label{Protoboard}
+    \end{minipage}
+    \hspace{0.02\linewidth}
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{Captura de pantalla 2026-03-29 151416.png}
+        \caption{Resistores}
+        \label{Resistores}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\linewidth]{Captura de pantalla 2026-03-29 151434.png}
+    \caption{Potenciómetro de 10 $k\Omega$}
+    \label{Potenciometro10k}
+\end{figure}
+
+\subsection{Características técnicas de los materiales}
+\begin{itemize}
+    \item Fuente de voltaje DC: Fuente casera de voltaje continuo otorgado por la facultad, con salidas de voltaje predeterminadas como 1.5V, 5V y 15V, además de una perilla que regula la salida del voltaje y muestra en pantalla la cantidad exacta. Para su uso, se deben conectar los cables de salida a los terminales correspondientes del circuito, asegurándose de respetar la polaridad (positivo y negativo).
+    \item Multímetro digital: Instrumento de medición, modelo PRASEK PREMIUM PR-61C, cuyos modos de operación son ohmímetro, voltímetro y amperímetro. Su número de dígitos es de 4 y presenta las siguientes escalas:
+    \begin{itemize}
+        \item Resistencia: 600 $\Omega$, 6 $k\Omega$, 60 $k\Omega$, 600 $k\Omega$, 6 $M\Omega$ y 60 $M\Omega$.
+        \item Voltaje: 60 mV, 600 mV, 6 V, 60 V, 600 V y 750 V.
+        \item Corriente: 600 $\mu$A, 6000 $\mu$A, 60 mA, 600 mA, 6 A y 10 A.
+        \item Impedancia de entrada: alrededor de 3000 $M\Omega$ en las escalas de 60 mV y 600 mV, y alrededor de 10 $M\Omega$ en las escalas de 6 V, 60 V, 600 V y 750 V.
+    \end{itemize}
+    Para su uso, se deben conectar los cables de medición a los terminales correspondientes del multímetro, seleccionar la función deseada en el selector rotativo y realizar la medición en el circuito, asegurándose de respetar la polaridad y la configuración adecuada para cada tipo de medición.
+    \item Protoboard: Es una placa de pruebas que permite realizar conexiones temporales sin necesidad de soldar. Para su uso, se deben insertar los componentes en las filas y columnas correspondientes, y realizar las conexiones utilizando cables de puente.
+    \item Resistencias: Son componentes que limitan el flujo de corriente en un circuito. Para su uso, se deben identificar sus valores utilizando el código de colores o un multímetro, y conectarlas en el circuito según sea necesario.
+    \item Potenciómetros: Son resistencias variables que permiten ajustar la resistencia manualmente. Para su uso, se deben conectar los terminales según el esquema del circuito y ajustar la perilla para obtener el valor de resistencia deseado.
+\end{itemize}
 
 \tituloSeccion{Procedimiento experimental}
-\subsection{Materiales e indicaciones}
+\subsection{PASO 1: Medición de resistencias}
 \begin{enumerate}
-    \item Se armó el circuito resistivo sobre la protoboard.
-    \item Se midió la corriente para distintos valores de voltaje.
-    \item Se compararon los resultados con el valor teórico esperado.
+    \item Se escogieron 3 resistencias de cuatro bandas y 2 resistencias de 5 bandas y se registraron en la Tabla \ref{tab:medicion-resistencias} sus valores nominales y porcentajes de toerancia según el código de colores, así como el value real medido con el multímetro.
+    \item Se armó el circuito indicado en la Figura \ref{CircuitoRedResistiva} en el protoboard, se escogieron 8 resistencias de 4 bandas, de valores diferentes pero de la misma magnitud. Se midió la resistencia equivalente entre A y B. También se encontró el error relativo entre el valor teórico y el valor medido. Los datos fueron anotados en las tablas \ref{tab:red-resistiva-resistencias} y \ref{tab:red-resistiva-resultados}.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{Imagen6.PNG}
+        \caption{Circuito para medir la resistencia equivalente de una red resistiva}
+        \label{CircuitoRedResistiva}
+    \end{figure}
 \end{enumerate}
 
-\newpage
+\subsection{PASO 2: Divisor de voltaje}
+\begin{enumerate}
+    \item Se armó el circuito del divisor de voltaje mostrado en la Figura \ref{CircuitoDivisorVoltaje} con $R_1=10\,\mathrm{k}\Omega$ y $R_2=10\,\mathrm{k}\Omega$ en el protoboard, pues estas eran las resistencias indicadas para que se cumpla que $V_{BC} / V_{AB} = 1/2$. Se midió el voltaje $V_{BC}$ y se comparó con el valor teórico obtenido con la ecuación \ref{eq:divisor-voltaje}. Se calculó el error relativo entre ambos valores. Los datos fueron anotados en las tablas \ref{tab:divisor-voltaje-r2} y \ref{tab:divisor-voltaje-vbc-1}.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{Imagen7.PNG}
+        \caption{Circuito divisor de voltaje para $R_1=10\,\mathrm{k}\Omega$ y $R_2=10\,\mathrm{k}\Omega$}
+        \label{CircuitoDivisorVoltaje}
+    \end{figure}
+    \item Se colocó una resistencia $R_3$ en paralelo con $R_2$, tal que el valor de $R_3$ permitió que $V_{BC} / V_{AB} = 1/4$, este valor fue calculado teóricamente con la ecuación \ref{eq:divisor-voltaje-general}. Se midió el voltaje $V_{BC}$ y se comparó con el valor teórico obtenido con la ecuación \ref{eq:divisor-voltaje-general}. Se calculó el error relativo entre ambos valores. Los datos fueron anotados en las tablas \ref{tab:divisor-voltaje-r3} y \ref{tab:divisor-voltaje-vbc-2}.
+    \item Se tomó un potenciómetro de $10k\Omega$ y otro de $100k\Omega$ y se puso en el circuito en lugar de $R_2$, de modo que al mover la perilla se obtengan diferentes resistencias y con ello varíe el valor de $V_{BC}$. Se midió el voltaje $V_{BC}$ para diferentes posiciones de la perilla y se comparó con los valores teóricos obtenidos con la ecuación \ref{eq:divisor-voltaje-general}. Se calculó el error relativo entre ambos valores. Los datos fueron anotados en las tablas \ref{tab:divisor-voltaje-potenciometro10k} y \ref{tab:divisor-voltaje-potenciometro100k}.
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.5\linewidth]{Imagen8.PNG}
+        \caption{Circuito divisor de voltaje con potenciómetro de $10k\Omega$}
+        \label{CircuitoDivisorVoltajePotenciometro}
+    \end{figure}
+\end{enumerate}
+
+\subsection{PASO 3: Divisor de corriente}
+\begin{enumerate}
+    \item Se armó el circuito del divisor de corriente mostrado en la Figura \ref{CircuitoDivisorCorriente} con $R_1=10\,\mathrm{k}\Omega$ y $R_2=10\,\mathrm{k}\Omega$ en el protoboard, pues estas eran las resistencias indicadas para que se cumpla que $I_2 / I = 1/2$. Se midió la corriente $I_2$ y se comparó con el valor teórico obtenido con la ecuación \ref{eq:divisor-corriente}. Se calculó el error relativo entre ambos valores. Los datos fueron anotados en las tablas \ref{tab:divisor-corriente-r2} y \ref{tab:divisor-corriente-ir2-1}.
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.5\linewidth]{Imagen9.PNG}
+        \caption{Circuito divisor de corriente para $R_1=10\,\mathrm{k}\Omega$ y $R_2=10\,\mathrm{k}\Omega$}
+        \label{CircuitoDivisorCorriente}
+    \end{figure}
+    \item Se colocó una resistencia $R_3$ en paralelo con $R_2$, tal que el valor de $R_3$ permitió que $I_2 / I = 1/4$, este valor fue calculado teóricamente con la ecuación \ref{eq:divisor-corriente-general}. Se midió la corriente $I_2$ y se comparó con el valor teórico obtenido con la ecuación \ref{eq:divisor-corriente-general}. Se calculó el error relativo entre ambos valores. Los datos fueron anotados en las tablas \ref{tab:divisor-corriente-r3} y \ref{tab:divisor-corriente-ir2-2}.
+\end{enumerate}
+
 \tituloSeccion{Análisis de datos}
 \subsection{Medición de resistencias}
 
-    \begin{table}[!ht]
+\begin{table}[H]
     \centering
     \fontsize{10pt}{12pt}\selectfont
     \renewcommand{\arraystretch}{1.2}
     \setlength{\tabcolsep}{6pt}
-    {\color{GrisTexto}
-    \begin{tabular}{|C{5.1cm}|C{3.2cm}|C{3.3cm}|C{2.8cm}|}
+    {
+    \begin{tabular}{|C{5.1cm}|C{3.2cm}|C{3.3cm}|C{2.5cm}|}
     \hline
     \textbf{Colores de las franjas en el resistor} &
     \textbf{$R\,(\Omega)$ código de colores} &
@@ -65,16 +260,18 @@
     AZUL - GRIS - NEGRO - DORADO & $68 \cdot 1 = 68,0$ & $\pm 5\%$ & $67,0$ \\
     \hline
     \end{tabular}}
-    \caption{Medición de resistencias por código de colores y multímetro.}
-    \label{tab:medicion-resistencias}
-    \end{table}
+\caption{Medición de resistencias por código de colores y multímetro.}
+\label{tab:medicion-resistencias}
+\end{table}
 
-    \begin{table}[!ht]
+\textbf{ANÁLISIS:} Revisando de manera independiente cada resistencia, nos damos cuenta que el valor real de la primera no entra dentro de la tolerancia esperada. Sin embargo, el resto si cumple con este requisito.
+
+\begin{table}[H]
     \centering
     \fontsize{10pt}{12pt}\selectfont
     \renewcommand{\arraystretch}{1.2}
     \setlength{\tabcolsep}{6pt}
-    {\color{GrisTexto}
+    {
     \begin{tabular}{|C{1.45cm}|C{1.45cm}|C{1.45cm}|C{1.45cm}|C{1.45cm}|C{1.45cm}|C{1.45cm}|C{1.45cm}|}
     \hline
     \textbf{$R_1$ ($\Omega$)} &
@@ -89,16 +286,16 @@
     $32,45\,\cdot\,10^{3}$ & $32,46\,\cdot\,10^{3}$ & $17,72\,\cdot\,10^{3}$ & $17,54\,\cdot\,10^{3}$ & $19,60\,\cdot\,10^{3}$ & $19,87\,\cdot\,10^{3}$ & $49,69\,\cdot\,10^{3}$ & $49,13\,\cdot\,10^{3}$ \\
     \hline
     \end{tabular}}
-    \caption{Valores medidos de las resistencias de la red mostrada en la figura 1.6.}
-    \label{tab:red-resistiva-resistencias}
-    \end{table}
+\caption{Valores medidos de las resistencias de la red mostrada en la figura 1.6.}
+\label{tab:red-resistiva-resistencias}
+\end{table}
 
-    \begin{table}[!ht]
+\begin{table}[H]
     \centering
     \fontsize{10pt}{12pt}\selectfont
     \renewcommand{\arraystretch}{1.2}
     \setlength{\tabcolsep}{6pt}
-    {\color{GrisTexto}
+    {
     \begin{tabular}{|C{4.0cm}|C{4.0cm}|C{4.0cm}|}
     \hline
     \textbf{$R_{eq}$ ($\Omega$) Calculado} &
@@ -108,18 +305,18 @@
     $27,667\,\cdot\,10^{3}$ & $27,67\,\cdot\,10^{3}$ & $0,01$ \\
     \hline
     \end{tabular}}
-    \caption{Resistencia equivalente calculada, resistencia equivalente medida y error relativo.}
-    \label{tab:resistencia-equivalente}
-    \end{table}
+\caption{Resistencia equivalente calculada, resistencia equivalente medida y error relativo.}
+\label{tab:red-resistiva-resultados}
+\end{table}
 
 \subsection{Divisor de voltaje}
 
-    \begin{table}[!ht]
+\begin{table}[H]
     \centering
     \fontsize{10pt}{12pt}\selectfont
     \renewcommand{\arraystretch}{1.2}
     \setlength{\tabcolsep}{6pt}
-    {\color{GrisTexto}
+    {
     \begin{tabular}{|C{3cm}|C{3cm}|C{3cm}|}
     \hline
     \textbf{Magnitud ($\Omega$) } & \textbf{Valor Teórico} & \textbf{Valor Real}\\
@@ -127,16 +324,16 @@
     $R_2$ & $10\,\mathrm{k}\Omega$ & $9,98\,\mathrm{k}\Omega$ \\
     \hline
     \end{tabular}}
-    \caption{Selección de la resistencia $R_2$ para el divisor de voltaje.}
-    \label{tab:divisor-voltaje-r2}
-    \end{table}
+\caption{Selección de la resistencia $R_2$ para el divisor de voltaje.}
+\label{tab:divisor-voltaje-r2}
+\end{table}
 
-    \begin{table}[!ht]
+\begin{table}[H]
     \centering
     \fontsize{10pt}{12pt}\selectfont
     \renewcommand{\arraystretch}{1.2}
     \setlength{\tabcolsep}{6pt}
-    {\color{GrisTexto}
+    {
     \begin{tabular}{|C{4cm}|C{4cm}|C{4cm}|}
     \hline
     \textbf{$V_{BC}$ (V) Calculado} & \textbf{$V_{BC}$ (V) Medido} & \textbf{$\%$ error relativo} \\
@@ -144,16 +341,16 @@
     $5$ & $5{,}025$ & $0{,}5\%$ \\
     \hline
     \end{tabular}}
-    \caption{Cálculo y medición de $V_{BC}$ para el primer montaje del divisor de voltaje.}
-    \label{tab:divisor-voltaje-vbc-1}
-    \end{table}
+\caption{Cálculo y medición de $V_{BC}$ para el primer montaje del divisor de voltaje.}
+\label{tab:divisor-voltaje-vbc-1}
+\end{table}
 
-    \begin{table}[!ht]
+\begin{table}[H]
     \centering
     \fontsize{10pt}{12pt}\selectfont
     \renewcommand{\arraystretch}{1.2}
     \setlength{\tabcolsep}{6pt}
-    {\color{GrisTexto}
+    {
     \begin{tabular}{|C{3cm}|C{3cm}|C{3cm}|}
     \hline
     \textbf{Magnitud ($\Omega$)} & \textbf{Valor Teórico} & \textbf{Valor Real}\\
@@ -161,34 +358,34 @@
     $R_3$ & $5\,\mathrm{k}\Omega$ & $4{,}99\,\mathrm{k}\Omega$ \\
     \hline
     \end{tabular}}
-    \caption{Selección de la resistencia $R_3$ para el segundo montaje del divisor de voltaje.}
-    \label{tab:divisor-voltaje-r3}
-    \end{table}
+\caption{Selección de la resistencia $R_3$ para el segundo montaje del divisor de voltaje.}
+\label{tab:divisor-voltaje-r3}
+\end{table}
 
-    \begin{table}[!ht]
+\begin{table}[H]
     \centering
     \fontsize{10pt}{12pt}\selectfont
     \renewcommand{\arraystretch}{1.2}
     \setlength{\tabcolsep}{6pt}
-    {\color{GrisTexto}
+    {
     \begin{tabular}{|C{4cm}|C{4cm}|C{4cm}|}
     \hline
     \textbf{$V_{BC}$ (V) Calculado} & \textbf{$V_{BC}$ (V) Medido} & \textbf{$\%$ error relativo} \\
     \hline
     $2{,}5$ & $2{,}499$ & $0{,}04$ \\
     \hline
-    \end{tabular}}
-    \caption{Cálculo y medición de $V_{BC}$ para el segundo montaje del divisor de voltaje.}
-    \label{tab:divisor-voltaje-vbc-2}
-    \end{table}
+\end{tabular}}
+\caption{Cálculo y medición de $V_{BC}$ para el segundo montaje del divisor de voltaje.}
+\label{tab:divisor-voltaje-vbc-2}
+\end{table}
 
-    \begin{table}[!ht]
+\begin{table}[H]
     \centering
     \fontsize{10pt}{12pt}\selectfont
     \renewcommand{\arraystretch}{1.2}
     \setlength{\tabcolsep}{6pt}
-    {\color{GrisTexto}
-    \begin{tabular}{|C{1cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|C{2cm}|}
+    {
+    \begin{tabular}{|C{1cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|C{2cm}|C{1.8cm}|C{2cm}|}
     \hline
     \textbf{$R_2$ (k$\Omega$)} &
     \textbf{$V_{BC}$ (V) Calculado} &
@@ -198,30 +395,60 @@
     \textbf{$I$ (A) Medido} &
     \textbf{$\%$ error relativo $I$} \\
     \hline
-    $4{,}001$ & $2{,}858$ & $2{,}198$ & $23{,}1\%$ & $0{,}714\cdot10^{-3}$ & $0{,}76\cdot10^{-3}$ & $6{,}4\%$ \\
+    $5,24$ & $3,37$ & $3,33$ & $1,19\%$ & $0,64\cdot10^{-3}$ & $0,65\cdot10^{-3}$ & $1,56\%$ \\
     \hline
-    $5{,}011$ & $3{,}338$ & $3{,}206$ & $4{,}0\%$ & $0{,}666\cdot10^{-3}$ & $\,$ & $\,$ \\
+    $8,21$ & $4,46$ & $4,48$ & $0,45\%$ & $0,54\cdot10^{-3}$ & $0,54\cdot10^{-3}$ & $0\%$ \\
     \hline
-    $\,$ & $\,$ & $\,$ & $\,$ & $\,$ & $\,$ & $\,$ \\
+    $10,13$ & $4,98$ & $5,00$ & $0,40\%$ & $0,49\cdot10^{-3}$ & $0,49\cdot10^{-3}$ & $0\%$ \\
     \hline
-    $\,$ & $\,$ & $\,$ & $\,$ & $\,$ & $\,$ & $\,$ \\
+    $12,57$ & $5,51$ & $5,51$ & $0\%$ & $0,44\cdot10^{-3}$ & $0,44\cdot10^{-3}$ & $0\%$ \\
     \hline
-    $\,$ & $\,$ & $\,$ & $\,$ & $\,$ & $\,$ & $\,$ \\
+    $15,12$ & $5.96$ & $5.98$ & $0,34\%$ & $0,39\cdot10^{-3}$ & $0,39\cdot10^{-3}$ & $0\%$ \\
     \hline
     \end{tabular}}
-    \caption{Mediciones para distintos valores de $R_2$ en el divisor de voltaje.}
-    \label{tab:divisor-voltaje-r2-variaciones}
-    \end{table}
+\caption{Mediciones para distintos valores de $R_2$ en el divisor de voltaje.}
+\label{tab:divisor-voltaje-potenciometro10k}
+\end{table}
 
-\newpage
-\subsection{Divisor de corriente}
-
-    \begin{table}[!ht]
+\begin{table}[H]
     \centering
     \fontsize{10pt}{12pt}\selectfont
     \renewcommand{\arraystretch}{1.2}
     \setlength{\tabcolsep}{6pt}
-    {\color{GrisTexto}
+    {
+    \begin{tabular}{|C{1cm}|C{1.8cm}|C{1.8cm}|C{1.8cm}|C{2cm}|C{1.8cm}|C{2cm}|}
+    \hline
+    \textbf{$R_2$ (k$\Omega$)} &
+    \textbf{$V_{BC}$ (V) Calculado} &
+    \textbf{$V_{BC}$ (V) Medido} &
+    \textbf{$\%$ error relativo $V_{BC}$} &
+    \textbf{$I$ (A) Calculado} &
+    \textbf{$I$ (A) Medido} &
+    \textbf{$\%$ error relativo $I$} \\
+    \hline
+    $20,51$ & $6,58$ & $6,55$ & $0,46\%$ & $0,52\cdot10^{-3}$ & $0,32\cdot10^{-3}$ & $38,46\%$ \\
+    \hline
+    $30,75$ & $7,40$ & $7,58$ & $2,43\%$ & $0,24\cdot10^{-3}$ & $0,24\cdot10^{-3}$ & $0\%$ \\
+    \hline
+    $40,46$ & $7,86$ & $7,84$ & $0,25\%$ & $0,19\cdot10^{-3}$ & $0,20\cdot10^{-3}$ & $5,26\%$ \\
+    \hline
+    $50,00$ & $8,17$ & $8,15$ & $0,24\%$ & $0,16\cdot10^{-3}$ & $0,15\cdot10^{-3}$ & $6,25\%$ \\
+    \hline
+    $71,3$ & $8,59$ & $8,58$ & $0,12\%$ & $0,12\cdot10^{-3}$ & $0,11\cdot10^{-3}$ & $8,33\%$ \\
+    \hline
+    \end{tabular}}
+\caption{Mediciones para distintos valores de $R_2$ en el divisor de voltaje.2}
+\label{tab:divisor-voltaje-potenciometro100k}
+\end{table}
+
+\subsection{Divisor de corriente}
+
+\begin{table}[H]
+    \centering
+    \fontsize{10pt}{12pt}\selectfont
+    \renewcommand{\arraystretch}{1.2}
+    \setlength{\tabcolsep}{6pt}
+    {
     \begin{tabular}{|C{3cm}|C{3cm}|C{3cm}|}
     \hline
     \textbf{Magnitud ($\Omega$)} & \textbf{Valor Teórico} & \textbf{Valor Real} \\
@@ -229,16 +456,16 @@
     $R_2$ & $10\,\mathrm{k}\Omega$ & $9{,}98\,\mathrm{k}\Omega$ \\
     \hline
     \end{tabular}}
-    \caption{Selección de la resistencia $R_2$ para el divisor de corriente.}
-    \label{tab:divisor-corriente-r2}
-    \end{table}
+\caption{Selección de la resistencia $R_2$ para el divisor de corriente.}
+\label{tab:divisor-corriente-r2}
+\end{table}
 
-    \begin{table}[!ht]
+\begin{table}[!ht]
     \centering
     \fontsize{10pt}{12pt}\selectfont
     \renewcommand{\arraystretch}{1.2}
     \setlength{\tabcolsep}{6pt}
-    {\color{GrisTexto}
+    {
     \begin{tabular}{|C{4cm}|C{4cm}|C{4cm}|}
     \hline
     \textbf{$I_2$ (A) Calculado} & \textbf{$I_2$ (A) Medido} & \textbf{$\%$ error relativo} \\
@@ -246,16 +473,16 @@
     $1\cdot10^{-3}$ & $0{,}98\cdot10^{-3}$ & $2$ \\
     \hline
     \end{tabular}}
-    \caption{Cálculo y medición de la corriente $I_2$ para el primer montaje del divisor de corriente.}
-    \label{tab:divisor-corriente-i2-1}
-    \end{table}
+\caption{Cálculo y medición de la corriente $I_2$ para el primer montaje del divisor de corriente.}
+\label{tab:divisor-corriente-ir2-1}
+\end{table}
 
-    \begin{table}[!ht]
+\begin{table}[H]
     \centering
     \fontsize{10pt}{12pt}\selectfont
     \renewcommand{\arraystretch}{1.2}
     \setlength{\tabcolsep}{6pt}
-    {\color{GrisTexto}
+    {
     \begin{tabular}{|C{3cm}|C{3cm}|C{3cm}|}
     \hline
     \textbf{Magnitud ($\Omega$)} & \textbf{Valor Teórico} & \textbf{Valor Real} \\
@@ -263,16 +490,16 @@
     $R_3$ & $20\,\mathrm{k}\Omega$ & $19{,}98\,\mathrm{k}\Omega$ \\
     \hline
     \end{tabular}}
-    \caption{Selección de la resistencia $R_3$ para el segundo montaje del divisor de corriente.}
-    \label{tab:divisor-corriente-r3}
-    \end{table}
+\caption{Selección de la resistencia $R_3$ para el segundo montaje del divisor de corriente.}
+\label{tab:divisor-corriente-r3}
+\end{table}
 
-    \begin{table}[!ht]
+\begin{table}[H]
     \centering
     \fontsize{10pt}{12pt}\selectfont
     \renewcommand{\arraystretch}{1.2}
     \setlength{\tabcolsep}{6pt}
-    {\color{GrisTexto}
+    {
     \begin{tabular}{|C{4cm}|C{4cm}|C{4cm}|}
     \hline
     \textbf{$I_2$ (A) Calculado} & \textbf{$I_2$ (A) Medido} & \textbf{$\%$ error relativo} \\
@@ -280,18 +507,26 @@
     $0{,}33\cdot10^{-3}$ & $0{,}33\cdot10^{-3}$ & $0$ \\
     \hline
     \end{tabular}}
-    \caption{Cálculo y medición de la corriente $I_2$ para el segundo montaje del divisor de corriente.}
-    \label{tab:divisor-corriente-i2-2}
-    \end{table}
+\caption{Cálculo y medición de la corriente $I_2$ para el segundo montaje del divisor de corriente.}
+\label{tab:divisor-corriente-ir2-2}
+\end{table}
 
 
 \tituloSeccion{Discusión de resultados}
+Los resultados obtenidos mostraron una buena concordancia entre los valores teóricos y los valores medidos, con errores relativos generalmente bajos. En la medición de resistencias, se observó que los valores obtenidos mediante el multímetro digital estaban dentro del rango de tolerancia especificado por el código de colores, lo que indica que las resistencias utilizadas estaban en buen estado y eran confiables para su uso en los circuitos.
 
 \tituloSeccion{Actividades adicionales}
-
+\begin{itemize}
+    \item Muestre como obtuvo téoricamente el resistor equivalente en el circuito de la Figura \ref{CircuitoRedResistiva}
+    \item Usando los datos del paso 2, ¿se podrá obtener el valor de la impedancia del multímetro cuando este se usa para medir voltaje? Justifique su respuesta.
+\end{itemize}
 \tituloSeccion{Conclusiones}
 
 \tituloSeccion{Bibliografía}
+    \begin{itemize}
+        \item JAMES J. BROPHY, \textit{Basic electronics for scientists}, $5^{Th}$ Edition, McGraw Hill.
+        \item UNI-FC, \textit{Circuitos Electrónicos Analógicos: Guía de laboratorio del experimento 1 y 2}, 2026
+    \end{itemize}
 
 \tituloSeccion{Anexos}
 
