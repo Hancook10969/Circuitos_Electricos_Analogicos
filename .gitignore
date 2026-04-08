@@ -12,7 +12,6 @@
 *.nav
 *.snm
 *.vrb
-*.pdf
 *.synctex.gz
 *.synctex(busy)
 *.vscode/
