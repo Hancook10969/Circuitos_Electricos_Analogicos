@@ -1,6 +1,13 @@
 % Paquetes y codificación de caracteres
 \usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage[spanish,es-nodecimaldot]{babel}
+% Mejora de calidad de fuentes para PDF
+\usepackage{lmodern}
+\usepackage{microtype}
+% Configuración de compresión PDF
+\pdfcompresslevel=9
+\pdfobjcompresslevel=2
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{geometry}
@@ -32,7 +39,9 @@
     urlcolor=black,
     citecolor=black,
     pdftitle={Plantilla de Informe de Laboratorio},
-    pdfauthor={Elmer}
+    pdfauthor={Elmer},
+    pdfcreator={pdfLaTeX},
+    pdfproducer={pdfLaTeX}
 }
 
 % Parrafos, interlineado (Espacio entre título y texto, y entre subtítulos consecutivos) y justificación
