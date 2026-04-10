@@ -1,5 +1,6 @@
 \documentclass[12pt,a4paper]{article}
 \input{../../PLANTILLA/Plantilla.tex}
+\usepackage{tikz}
 \renewcommand{\RutaLogo}{../../PLANTILLA/logo.PNG}
 \graphicspath{{Imagenes/}}
 \ConfigurarInforme{1}{MEDICIONES DC}{Fecha de realización del Laboratorio N\textdegree{}1: Jueves 26 de Marzo del 2026 - 08:00 am}
@@ -84,7 +85,7 @@ Este circuito en serie se caracteriza porque la corriente es la misma (en una ra
     \label{DivisorVoltaje}
 \end{figure}
 
-Si por el circuito pasa una corriente $I$ entonces se tiene $V_{in} - IR_1 - IR_2=0$. Por la ley de Ohm, en el resistor $R_2$ se tiene que $V_2=IR_2$. entonces:
+Si por el circuito pasa una corriente $I$ entonces se tiene $V_{in} - IR_1 - IR_2=0$. Por la ley de Ohm, en el resistor $R_2$ se tiene que $V_2=IR_2$. Entonces:
 \begin{equation}
     V_2=V_{in}\bigg(\frac{R_2}{R_1+R_2}\bigg)
     \label{eq:divisor-voltaje}
@@ -128,64 +129,15 @@ La impedancia interna del multímetro es una característica intrínseca que se 
 \tituloSeccion{Materiales e indicaciones}
 
 \begin{itemize}
-        \item Fuente de voltaje DC (Fig. \ref{Fuente DC})
-        \item Multímetro digital (Fig. \ref{Multimetro})
-        \item Protoboard (Fig. \ref{Protoboard})
-        \item Resistencias (Fig. \ref{Resistores})
-        \item Potenciómetros (Fig. \ref{Potenciometro10k})
-    \end{itemize}
-    
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Captura de pantalla 2026-03-29 151256.png}
-        \caption{Fuente de voltaje DC}
-        \label{Fuente DC}
-    \end{minipage}
-    \hspace{0.02\linewidth}
-    \begin{minipage}{0.48\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Captura de pantalla 2026-03-29 151343.png}
-        \caption{Multímetro Digital}
-        \label{Multimetro}
-    \end{minipage}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \begin{minipage}{0.48\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Captura de pantalla 2026-03-29 151358.png}
-        \caption{Protoboard}
-        \label{Protoboard}
-    \end{minipage}
-    \hspace{0.02\linewidth}
-    \begin{minipage}{0.48\linewidth}
-        \centering
-        \includegraphics[width=\linewidth]{Captura de pantalla 2026-03-29 151416.png}
-        \caption{Resistores}
-        \label{Resistores}
-    \end{minipage}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.4\linewidth]{Captura de pantalla 2026-03-29 151434.png}
-    \caption{Potenciómetro de 10 $k\Omega$}
-    \label{Potenciometro10k}
-\end{figure}
-
-\subsection{Características técnicas de los materiales}
-\begin{itemize}
     \item Fuente de voltaje DC: Fuente casera de voltaje continuo otorgado por la facultad, con salidas de voltaje predeterminadas como 1.5V, 5V y 15V, además de una perilla que regula la salida del voltaje y muestra en pantalla la cantidad exacta. Para su uso, se deben conectar los cables de salida a los terminales correspondientes del circuito, asegurándose de respetar la polaridad (positivo y negativo).
     \item Multímetro digital: Instrumento de medición, modelo PRASEK PREMIUM PR-61C, cuyos modos de operación son ohmímetro, voltímetro y amperímetro. Su número de dígitos es de 4 y presenta las siguientes escalas:
-    \begin{itemize}
+    \begin{enumerate}
         \item Resistencia: 600 $\Omega$, 6 $k\Omega$, 60 $k\Omega$, 600 $k\Omega$, 6 $M\Omega$ y 60 $M\Omega$.
         \item Voltaje: 60 mV, 600 mV, 6 V, 60 V, 600 V y 750 V.
         \item Corriente: 600 $\mu$A, 6000 $\mu$A, 60 mA, 600 mA, 6 A y 10 A.
         \item Impedancia de entrada: alrededor de 3000 $M\Omega$ en las escalas de 60 mV y 600 mV, y alrededor de 10 $M\Omega$ en las escalas de 6 V, 60 V, 600 V y 750 V.
-    \end{itemize}
+    \end{enumerate}
+    \newpage
     Para su uso, se deben conectar los cables de medición a los terminales correspondientes del multímetro, seleccionar la función deseada en el selector rotativo y realizar la medición en el circuito, asegurándose de respetar la polaridad y la configuración adecuada para cada tipo de medición.
     \item Protoboard: Es una placa de pruebas que permite realizar conexiones temporales sin necesidad de soldar. Para su uso, se deben insertar los componentes en las filas y columnas correspondientes, y realizar las conexiones utilizando cables de puente.
     \item Resistencias: Son componentes que limitan el flujo de corriente en un circuito. Para su uso, se deben identificar sus valores utilizando el código de colores o un multímetro, y conectarlas en el circuito según sea necesario.
@@ -215,6 +167,7 @@ La impedancia interna del multímetro es una característica intrínseca que se 
     \end{figure}
 \end{enumerate}
 
+\newpage
 \subsection{PASO 2: Divisor de voltaje}
 \begin{enumerate}
     \item Se armó el circuito del divisor de voltaje mostrado en la Figura \ref{CircuitoDivisorVoltaje} con $R_1=10\,\mathrm{k}\Omega$ y $R_2=10\,\mathrm{k}\Omega$ en el protoboard, pues estas eran las resistencias indicadas para que se cumpla que $V_{BC} / V_{AB} = 1/2$. Se midió el voltaje $V_{BC}$ y se comparó con el valor teórico obtenido con la ecuación \ref{eq:divisor-voltaje}. Se calculó el error relativo entre ambos valores. Los datos fueron anotados en las tablas \ref{tab:divisor-voltaje-r2} y \ref{tab:divisor-voltaje-vbc-1}.
@@ -357,7 +310,7 @@ La impedancia interna del multímetro es una característica intrínseca que se 
 
 \textbf{ANÁLISIS:} El error relativo extremadamente bajo (0,01\%) entre el valor teórico calculado y el valor medido de la resistencia equivalente demuestra la precisión de la medición y la calidad del multímetro utilizado. Esta concordancia valida tanto los cálculos realizados como la correcta implementación del circuito en el protoboard.
 
-\newpage
+\bigskip
 \subsection{Divisor de voltaje}
 
 \begin{table}[H]
@@ -539,7 +492,6 @@ La impedancia interna del multímetro es una característica intrínseca que se 
 \end{table}
 
 \textbf{ANÁLISIS:} El divisor de corriente con resistencias iguales presenta un error relativo de 2\%, ligeramente mayor que los obtenidos en el divisor de voltaje. Esta diferencia puede atribuirse a que las mediciones de corriente requieren insertar el amperímetro en serie con el circuito, lo que puede introducir pequeñas perturbaciones adicionales debido a la impedancia interna del multímetro, aunque el resultado sigue siendo satisfactorio y valida la ecuación del divisor de corriente.
-\newpage
 
 \begin{table}[H]
     \centering
@@ -578,6 +530,7 @@ La impedancia interna del multímetro es una característica intrínseca que se 
 \textbf{ANÁLISIS:} El segundo montaje del divisor de corriente, con $R_3$ en paralelo que logra la relación $I_2/I = 1/4$, muestra una concordancia perfecta (error relativo del 0\%) entre el valor teórico y el medido. Este resultado excepcional confirma la precisión del cálculo de la resistencia equivalente en paralelo y valida completamente la ecuación generalizada del divisor de corriente para circuitos con múltiples resistencias.
 \bigskip
 
+\newpage
 \tituloSeccion{Discusión de resultados}
 Los resultados obtenidos demuestran una excelente concordancia entre los valores teóricos y experimentales, validando tanto los modelos teóricos como la calidad de la instrumentación utilizada.
 
@@ -587,7 +540,7 @@ En la medición individual de resistencias, se observó que 4 de las 5 resistenc
 El análisis de la red resistiva compleja mostró una precisión excepcional, incluso inesperada, con un error relativo de apenas 0,01\%, lo que demuestra que las leyes de combinación de resistencias (series y paralelos) se cumplen en condiciones prácticas.
 
 \subsection{Comportamiento de los divisores de voltaje}
-Los divisores de voltaje exhibieron un rendimiento demasiado bueno en todas las configuraciones probadas. El divisor básico con resistencias iguales (10 k$\Omega$ cada una) presentó un error de solo 0,5\%, mientras que la configuración modificada con $R_3$ en paralelo logró un error de 0,04\%, demostrando que la adición de resistencias en paralelo es una técnica efectiva para ajustar con precisión las relaciones de voltaje.
+Los divisores de voltaje exhibieron un rendimiento muy bueno en todas las configuraciones probadas. El divisor básico con resistencias iguales (10 k$\Omega$ cada una) presentó un error de solo 0,5\%, mientras que la configuración modificada con $R_3$ en paralelo logró un error de 0,04\%, demostrando que la adición de resistencias en paralelo es una técnica efectiva para ajustar con precisión las relaciones de voltaje.
 
 Los experimentos con potenciómetros revelaron comportamientos interesantes: el potenciómetro de 10 k$\Omega$ mostró errores máximos de 1,19\% en voltaje, mientras que el de 100 k$\Omega$ presentó errores de hasta 2,43\%. Consideramos que esta diferencia se debe principalmente a la fácil variación de resistencia en el potenciómetro al sacarlo del protoboard (donde se mide) y ponerlo otra vez en el circuito.
 
@@ -601,8 +554,9 @@ El análisis de los datos revela que la impedancia del multímetro (3000 M$\Omeg
 
 \tituloSeccion{Actividades adicionales}
 \begin{itemize}
-    \item Muestre como obtuvo téoricamente el resistor equivalente en el circuito de la Figura \ref{CircuitoRedResistiva}
+    \item Muestre cómo obtuvo teóricamente el resistor equivalente en el circuito de la Figura \ref{CircuitoRedResistiva}
     \item Usando los datos del paso 2, ¿se podrá obtener el valor de la impedancia del multímetro cuando este se usa para medir voltaje? Justifique su respuesta.
+    \item Diseñe un experimento que permita determinar la resistencia interna del multímetro cuando se mide corriente eléctrica. Elabore un diagrama del circuito, explique el procedimiento y justifique los cálculos necesarios.
 \end{itemize}
 
 \subsection{Cálculo teórico del resistor equivalente}
@@ -650,57 +604,44 @@ R_{eq(A-B)} = \frac{R_{7521346} \cdot R_8}{R_{7521346} + R_8} = \frac{63,34 \tim
 Para determinar la impedancia interna del multímetro cuando se usa para medir voltaje, utilizaremos los datos del divisor de voltaje del paso 2.
 
 \textbf{Análisis teórico:}
-Cuando el multímetro se conecta en paralelo para medir voltaje, su impedancia interna $R_{mult}$ forma un paralelo con la resistencia del circuito, alterando la resistencia equivalente y por tanto el voltaje medido.
+Cuando el multímetro se conecta en paralelo para medir voltaje, su impedancia interna $R_{mult}$ se coloca en paralelo con la rama donde se mide $V_{BC}$, de modo que el voltaje observado puede variar ligeramente respecto al valor ideal.
 
-Para el divisor de voltaje básico con $R_1 = R_2 = 10 \, \mathrm{k}\Omega$:
+Para el divisor de voltaje básico con $R_1 = 10 \, \mathrm{k}\Omega$ y $R_2 = 10 \, \mathrm{k}\Omega$:
 \begin{itemize}
-    \item Sin multímetro: $V_{BC,teórico} = V_{AB} \times \frac{R_2}{R_1 + R_2} = 10 \times \frac{10}{10 + 10} = 5{,}0 \, \mathrm{V}$
-    \item Con multímetro: $V_{BC,medido} = 5{,}025 \, \mathrm{V}$
+    \item Sin multímetro: $V_{BCideal} = V_{in} \cdot \frac{R_2}{R_1 + R_2} = 10 \cdot \frac{10}{10 + 10} = 5{,}0 \, \mathrm{V}$
+    \item Con multímetro: $V_{BCmedido} = 5{,}025 \, \mathrm{V}$
 \end{itemize}
 
-\textbf{Cálculo de la impedancia:}
-La resistencia equivalente de $R_2$ en paralelo con $R_{mult}$ es:
+Si se modela el multímetro como una carga resistiva, la resistencia equivalente de la rama medida es:
 \begin{equation}
-R_{eq} = \frac{R_2 \cdot R_{mult}}{R_2 + R_{mult}} = \frac{9{,}98 \times R_{mult}}{9{,}98 + R_{mult}}
+R_{eq} = \frac{R_2 \cdot R_{mult}}{R_2 + R_{mult}}
 \end{equation}
 
-El voltaje medido será:
+En un divisor de voltaje, esa resistencia equivalente puede despejarse a partir de la razón $x = V_{BC}/V_{in}$:
 \begin{equation}
-V_{BC,medido} = V_{AB} \times \frac{R_{eq}}{R_1 + R_{eq}} = 10 \times \frac{R_{eq}}{9{,}98 + R_{eq}}
+R_{eq} = \frac{x \, R_1}{1 - x}
 \end{equation}
 
-Sustituyendo $V_{BC,medido} = 5{,}025 \, \mathrm{V}$:
+Usando los datos medidos:
 \begin{equation}
-5{,}025 = 10 \times \frac{R_{eq}}{9{,}98 + R_{eq}}
+x = \frac{5{,}025}{10} = 0{,}5025
 \end{equation}
 
-Resolviendo para $R_{eq}$:
+por lo tanto,
 \begin{equation}
-0{,}5025 = \frac{R_{eq}}{9{,}98 + R_{eq}} \Rightarrow R_{eq} = \frac{0{,}5025 \times 9{,}98}{1 - 0{,}5025} = 10{,}05 \, \mathrm{k}\Omega
+R_{eq} = \frac{0{,}5025 \cdot 10 \, \mathrm{k}\Omega}{1 - 0{,}5025} = 10{,}10 \, \mathrm{k}\Omega
 \end{equation}
 
-Ahora, igualando con la ecuación del paralelo:
+Sin embargo, en un paralelo entre dos resistencias positivas siempre debe cumplirse que $R_{eq} < R_2$. Como aquí se obtiene $R_{eq} \approx 10{,}10 \, \mathrm{k}\Omega > R_2 = 9{,}98 \, \mathrm{k}\Omega$, la ecuación
 \begin{equation}
-10{,}05 = \frac{9{,}98 \times R_{mult}}{9{,}98 + R_{mult}}
+R_L = \frac{R_2 \cdot R_{mult}}{R_2 + R_{mult}}
 \end{equation}
-
-Resolviendo para $R_{mult}$:
-\begin{equation}
-R_{mult} = \frac{10{,}05 \times 9{,}98}{9{,}98 - 10{,}05} = \frac{100{,}3}{-0{,}07} = -1433 \, \mathrm{k}\Omega
-\end{equation}
-
-\textbf{Interpretación del resultado:}
-El resultado negativo indica que el método aplicado no es viable para determinar la impedancia del multímetro con la precisión de datos disponible. Esto se debe a que:
-
-\begin{enumerate}
-    \item \textbf{La diferencia entre valores es muy pequeña}: $5{,}025 \, \mathrm{V} - 5{,}000 \, \mathrm{V} = 0{,}025 \, \mathrm{V}$ (0{,}5\% de diferencia)
-    \item \textbf{La impedancia del multímetro es muy alta}: Según especificaciones técnicas, $R_{mult} \approx 10 \, \mathrm{M}\Omega$, lo que hace que su efecto sea prácticamente despreciable
-    \item \textbf{Las incertidumbres experimentales} del mismo orden de magnitud que el efecto a medir
-\end{enumerate}
+no admite una solución física con $R_{mult} > 0$. Si se despeja algebraicamente, aparece un valor negativo, pero eso no representa una impedancia real: únicamente indica que los datos no son consistentes con un efecto de carga medible del multímetro.
 
 \textbf{Conclusión:}
-No es factible determinar con precisión la impedancia del multímetro usando los datos del paso 2, ya que la alta impedancia interna del instrumento (del orden de megaohmios) produce efectos de carga despreciables frente a las resistencias del circuito (del orden de kilohmios). Para una determinación precisa sería necesario usar resistencias del mismo orden de magnitud que la impedancia del multímetro o emplear métodos de medición más sofisticados.
+Con los datos del paso 2 no es posible determinar la impedancia interna del multímetro. La lectura está dentro del orden de la incertidumbre experimental y, además, la impedancia de entrada típica del instrumento es muy alta (aproximadamente $10 \, \mathrm{M}\Omega$ en las escalas de voltaje), por lo que su efecto de carga sobre un divisor de resistencias de $10 \, \mathrm{k}\Omega$ es prácticamente despreciable.
 
+\bigskip
 \tituloSeccion{Conclusiones}
 
 \subsection{Conclusiones sobre mediciones de resistencias}
